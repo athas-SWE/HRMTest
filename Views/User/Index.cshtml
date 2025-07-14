@@ -1,0 +1,33 @@
+﻿@model List<UserModel>
+@{
+    ViewData["Title"] = "User List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="d-flex justify-content-between mb-3">
+    <h2>User List</h2>
+    <a asp-action="Create" class="btn btn-primary">Create New User</a>
+</div>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Username</th>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.EmployeeId</td>
+                <td>@user.EmployeeName</td>
+                <td style="color:@(user.IsActive ? "green" : "red")">
+                    @(user.IsActive ? "Active" : "Inactive")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
